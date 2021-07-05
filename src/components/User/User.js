@@ -1,8 +1,12 @@
-export default function User(props){
-    let {item: user} = props;
+export default function User({item, fnFather}){
     return (
         <div>
-            {user.id} - {user.name}
+            {item.id} - {item.name} -
+            <button onClick={
+                () => fnFather(item.id)
+            }>
+                click me
+            </button>
         </div>
     )
 }

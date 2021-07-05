@@ -1,12 +1,12 @@
-import "./Post.css"
-
-export default function Post(props){
-    let {item: post} = props;
+export default function Post({item, fnMother}){
     return (
-        <div className={"out"}>
-            <div className={"in"}>
-                {post.id} - {post.title} - {post.body}
-            </div>
+        <div>
+            {item.id} - {item.name} -
+            <button onClick={
+                () => fnMother(item.id)
+            }>
+                click me
+            </button>
         </div>
     )
 }
