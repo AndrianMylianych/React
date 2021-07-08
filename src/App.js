@@ -1,50 +1,25 @@
-import {useEffect, useState} from "react";
-import {getPost, getPosts, getUser, getUsers} from "./services/API";
-import Users from "./components/Users/Users";
-import Posts from "./components/Posts/Posts";
+import {useEffect, useState} from 'react';
+import {getAllUsers} from './services/user.api';
+import Users from './components/Users/Users';
 
-function App() {
-
-    let [user, setUser] = useState(null);
-
-    let appFn = (id) => {
-        getUser(id).then(value => setUser(value.data));
-    }
+export default function App() {
 
     let [users, setUsers] = useState([]);
 
-    useEffect( () => {
-        getUsers().then(value => setUsers(value.data));
+    let [user, setUser] = useState({});
+    useEffect(() => {
+        getAllUsers().then(value => setUsers([...value]));
     }, []);
 
-    let [post, setPost] = useState(null);
-
-    let appMn = (id) => {
-        getPost(id).then(value => setPost(value.data));
-    }
-
-    let [posts, setPosts] = useState([]);
-
-    useEffect( () =>{
-        getPosts().then(value => setPosts(value.data))
-    }, []);
+    const fromApp = (id) => {
+        setUser({...users.find(value => value.id === id)});
+    };
 
     return (
-    <div>
-        <Users items={users} appFn={appFn}/>
-        <hr/>
-        {
-            user && <div>{JSON.stringify(user.name)}</div>
-        }
-        <hr/>
+        <div>
+            <h2>{user.username}</h2>
+            <Users usersList={users} fromApp={fromApp}/>
 
-        <Posts items={posts} appMn={appMn}/>
-        <hr/>
-        {
-            post && <div>{JSON.stringify(post)}</div>
-        }
-    </div>
-  );
+        </div>
+    );
 }
-
-export default App;

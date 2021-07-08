@@ -1,12 +1,14 @@
-import User from "../User/User";
+import User from '../User/User';
 
-export  default  function Users({items, appFn}){
-
+export default function Users({usersList,fromApp}) {
     return (
         <div>
             {
-                items.map((value) =>  <User item={value} key={value.id} fnFather={appFn}/>)
+
+                usersList.map(value => <User key={value.id} singleUser={value} fromApp={fromApp}/>)
             }
+
+
         </div>
-    )
+    );
 }

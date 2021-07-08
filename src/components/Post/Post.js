@@ -1,12 +1,7 @@
-export default function Post({item, fnMother}){
+export default function Post({singlePost}) {
     return (
         <div>
-            {item.id} - {item.name} -
-            <button onClick={
-                () => fnMother(item.id)
-            }>
-                click me
-            </button>
+            <i>{singlePost.title}</i>
         </div>
-    )
+    );
 }
