@@ -22,11 +22,12 @@ export default function App() {
                 </div>
 
                 <Switch>
-                    <Route path={'/users'} component={Users}/>
+                    <Route exact path={'/users/:id/posts'} component={Posts}/>
+                    <Route exact path={'/users'} component={Users}/>
 
-                    <Route path={'/posts'} component={Posts}/>
+                    <Route exact path={'/posts'} component={Posts}/>
 
-                    <Route path={'/comment'} component={Comments}/>
+                    <Route exact path={'/comment'} component={Comments}/>
                 </Switch>
             </div>
         </Router>
