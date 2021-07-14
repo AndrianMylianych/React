@@ -5,14 +5,11 @@ import {
     Link,
     withRouter
 } from 'react-router-dom';
-import Posts from '../posts/Posts';
 
     let user = function User({item}) {
         return(
             <div>
-                {item.name} - <Link to={'/users/' + item.id}>get posts</Link>
-
-                <Route path={'/users/' + item.id} component={Posts}/>
+                {item.name} - <Link to={'/users/' + item.id + '/posts'}>get posts</Link>
             </div>
         )
     }
